@@ -1,25 +1,36 @@
 #!/bin/bash
-apt update
-apt upgrade -y
+# meant to be called as sudo
+sudo apt update
+sudo apt upgrade -y
 
 # prep swap for extended memory, 4G aint enough
-fallocate -l 8G /swapfile
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo "/swapfile swap swap defaults 0 0" | tee --append /etc/fstab > /dev/null
+sudo fallocate -l 8G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo "/swapfile swap swap defaults 0 0" | sudo tee --append /etc/fstab > /dev/null
 
 # cleanup stuff we don't need and takes ram
 # this will eventually increase, one hopes
-systemctl enable multi-user.target
-systemctl set-default multi-user.target
-apt -y purge whoopsie
-apt -y purge unattended-upgrades
-apt -y purge modemmanager
+sudo systemctl enable multi-user.target
+sudo systemctl set-default multi-user.target
+sudo apt -y purge whoopsie
+sudo apt -y purge unattended-upgrades
+sudo apt -y purge modemmanager
 
 # PyTorch dependencies
-apt install -y python3-dev python3-pip
+sudo apt install -y python3-dev python3-pip
+# Fast.ai dependencies
+sudo apt install -y libjpeg-dev zlib1g-dev
+sudo apt install -y python3-matplotlib
+sudo apt install -y python3-scipy
+# jupyter dependencies
+sudo apt install -y nodejs npm
+
+# PyTorch dependencies
 python3.6 -m pip install --upgrade cython
+# Fast.ai dependencies
+pip3 install spacy==2.0.18
 
 # install PyTorch
 # Check the nvidia forum for updates, the community is great, get involved
@@ -27,13 +38,11 @@ wget https://nvidia.box.com/shared/static/phqe92v26cbhqjohwtvxorrwnmrnfx1o.whl -
 pip3 install numpy torch-1.3.0-cp36-cp36m-linux_aarch64.whl
 rm torch-1.3.0-cp36-cp36m-linux_aarch64.whl
 
-# Fast.ai dependencies
-apt install -y libjpeg-dev zlib1g-dev
-apt install -y python3-matplotlib
-apt install -y python3-scipy
-pip3 install spacy==2.0.18
-
 # install Fast.ai
 pip3 install fastai
 
-echo "run next script"
+# install jupyter
+pip3 install jupyter jupyterlab
+
+sudo reboot
+
