@@ -1,5 +1,4 @@
 #!/bin/bash
-sudo su
 apt update
 apt upgrade -y
 
@@ -37,19 +36,4 @@ pip3 install spacy==2.0.18
 # install Fast.ai
 pip3 install fastai
 
-# jupyter dependencies
-sudo apt install -y nodejs npm
-
-# no more sudo for installation, only reboot
-exit
-
-# this is for my work env, remove if not applicable
-mkdir works
-cd works
-git clone https://github.com/fastai/fastai.git
-cd ..
-
-# install jupyter
-pip3 install jupyter jupyterlab
-
-sudo reboot
+echo "run next script"
