@@ -22,16 +22,17 @@ sudo apt -y purge modemmanager
 sudo apt install -y python3-dev python3-pip
 # Fast.ai dependencies
 sudo apt install -y libjpeg-dev zlib1g-dev
+sudo apt install -y python3-numpy=1.18
 sudo apt install -y python3-matplotlib
-sudo apt install -y python3-scipy
+sudo apt install -y python3-scipy=0.19.0
 # jupyter dependencies
 sudo apt install -y nodejs npm
 
 # PyTorch dependencies
 sudo python3.6 -m pip install --upgrade cython
 # Fast.ai dependencies
-sudo pip3 install numpy==1.18
-sudo pip3 install scipy<=0.19.0
+sudo pip3 install numpy=1.18
+sudo pip3 install scipy==0.19.0
 sudo pip3 install spacy==2.0.18
 
 # install PyTorch
