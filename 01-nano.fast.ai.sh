@@ -25,14 +25,15 @@ apt install -y scipy
 apt install -y libjpeg-dev zlib1g-dev
 apt install -y nodejs npm
 apt install -y python3-matplotlib
+apt install -y libopenblas-dev
 pip3 install spacy==2.0.18
 pip3 install numpy==1.17.5
 
 # install PyTorch
 # Check the nvidia forum for updates, the community is great, get involved
-wget https://nvidia.box.com/shared/static/phqe92v26cbhqjohwtvxorrwnmrnfx1o.whl -O torch-1.3.0-cp36-cp36m-linux_aarch64.whl
-pip3 install numpy torch-1.3.0-cp36-cp36m-linux_aarch64.whl
-rm torch-1.3.0-cp36-cp36m-linux_aarch64.whl
+wget https://nvidia.box.com/shared/static/ncgzus5o23uck9i5oth2n8n06k340l6k.whl -O torch-1.4.0-cp36-cp36m-linux_aarch64.whl
+pip3 install numpy torch-1.4.0-cp36-cp36m-linux_aarch64.whl
+rm torch-1.4.0-cp36-cp36m-linux_aarch64.whl
 
 # install Fast.ai
 pip3 install fastai
